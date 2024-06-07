@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const apiKeyInput = document.getElementById('apiKey');
     const voiceSelect = document.getElementById('voice-id');
+    const form = document.getElementById('upload-form');
+    const responseDiv = document.getElementById('response');
 
     // Fetch available voices from Eleven Labs API and populate the dropdown
     function populateVoices() {
@@ -36,16 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
     apiKeyInput.addEventListener('change', populateVoices);
 
     // Handle form submission
-    document.getElementById('upload-form').addEventListener('submit', function(event) {
+    form.addEventListener('submit', function(event) {
         event.preventDefault();
-        var formData = new FormData();
-        formData.append('video', document.getElementById('video').files[0]);
-        formData.append('text', document.getElementById('text').files[0]);
-        formData.append('voice-id', document.getElementById('voice-id').value);
-        formData.append('apiKey', apiKeyInput.value);
-        formData.append('speed', document.getElementById('speed').value);
-
-        fetch('https://video-processing-backend-3.onrender.com', {
+        var formData = new FormData(form);
+        fetch('https://video-processing-backend-3.onrender.com/upload', {
             method: 'POST',
             body: formData
         })
@@ -59,11 +55,34 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);
+
+            // Update the UI to show success message and "Go Back" button
+            form.style.display = 'none';
+            responseDiv.innerHTML = `
+                <p>Processing completed successfully! Your file is downloaded.</p>
+                <button id="go-back">Go Back</button>
+            `;
+
+            // Add event listener for "Go Back" button
+            document.getElementById('go-back').addEventListener('click', function() {
+                form.style.display = 'block';
+                responseDiv.innerHTML = '';
+            });
+
             document.getElementById('response').innerText = 'File downloaded!';
         })
         .catch(error => {
             console.error('Error:', error);
-            document.getElementById('response').innerText = 'Error uploading files.';
+            responseDiv.innerHTML = `
+                <p>Error uploading files. Please try again.</p>
+                <button id="go-back">Go Back</button>
+            `;
+
+            // Add event listener for "Go Back" button in case of error
+            document.getElementById('go-back').addEventListener('click', function() {
+                form.style.display = 'block';
+                responseDiv.innerHTML = '';
+            });
         });
     });
 });
