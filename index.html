@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Processing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Video Processing</h1>
+        <form id="upload-form">
+            <div class="file-input">
+                <label for="video">Video File:</label>
+                <input type="file" id="video" name="video" accept="video/*">
+            </div>
+            <div class="file-input">
+                <label for="text">Text File (Subtitles):</label>
+                <input type="file" id="text" name="text" accept=".txt">
+            </div>
+            <button type="submit">Begin Processing</button>
+        </form>
+        <div id="response"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
