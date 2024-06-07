@@ -8,27 +8,31 @@
 </head>
 <body>
     <div class="container">
-        <h1>Video Processing</h1>
+        <h1>Video Voice Changing Bot</h1>
         <form id="upload-form">
             <div class="file-input">
                 <label for="video">Video File:</label>
-                <input type="file" id="video" name="video" accept="video/*">
+                <input type="file" id="video" name="video" accept="video/*" required>
             </div>
             <div class="file-input">
                 <label for="text">Text File (Subtitles):</label>
-                <input type="file" id="text" name="text" accept=".txt">
+                <input type="file" id="text" name="text" accept=".txt" required>
             </div>
             <div class="settings-input">
-                <label for="voice-id">Voice ID:</label>
-                <input type="text" id="voice-id" name="voice-id" placeholder="Enter Voice ID">
+                <label for="voice_id">Voice ID:</label>
+                <input type="text" id="voice_id" name="voice_id" placeholder="Enter Voice ID" required>
             </div>
             <div class="settings-input">
-                <label for="apiKey">API Key:</label>
-                <input type="text" id="apiKey" name="apiKey" placeholder="Enter your API key">
+                <label for="api_key">API Key:</label>
+                <input type="text" id="api_key" name="api_key" placeholder="Enter your API key" required>
             </div>
             <div class="settings-input">
                 <label for="speed">Speed:</label>
                 <input type="number" id="speed" name="speed" step="0.01" value="1.15">
+            </div>
+            <div class="settings-input">
+                <label for="set_speed_up">Set Speed Up:</label>
+                <input type="checkbox" id="set_speed_up" name="set_speed_up" checked>
             </div>
             <button type="submit">Begin Processing</button>
         </form>
