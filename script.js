@@ -7,6 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         var formData = new FormData(form);
 
+        // Validate background music ranges
+        const happyStart = parseInt(document.getElementById('happy_start').value, 10);
+        const happyEnd = parseInt(document.getElementById('happy_end').value, 10);
+        const sadStart = parseInt(document.getElementById('sad_start').value, 10);
+        const sadEnd = parseInt(document.getElementById('sad_end').value, 10);
+
+        if (happyStart >= happyEnd || sadStart >= sadEnd || happyEnd > sadStart) {
+            alert('Invalid background music ranges. Ensure they do not overlap and start times are less than end times.');
+            return;
+        }
+
         // Clear previous messages
         responseDiv.innerHTML = '';
 
