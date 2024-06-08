@@ -16,7 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         fetch('https://video-processing-backend.onrender.com/upload', {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Accept': 'application/json',
+                'Origin': 'https://yungnewton.github.io'
+            }
         })
         .then(response => {
             if (!response.ok) {
