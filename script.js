@@ -29,14 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
             var a = document.createElement('a');
             a.style.display = 'none';
             a.href = url;
-            a.download = 'srt_files.zip';
+            a.download = 'output_files.zip';
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);
 
             form.style.display = 'none';
             responseDiv.innerHTML = `
-                <p>Processing completed successfully! Your SRT files are downloaded.</p>
+                <p>Processing completed successfully! Your file is downloaded.</p>
                 <button id="go-back">Go Back</button>
             `;
 
