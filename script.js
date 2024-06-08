@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.textContent = 'Processing...';
         submitButton.disabled = true;
 
-        fetch('https://video-processing-backend.onrender.com/upload', {
+        fetch('http://35.178.78.130:8080//upload', {
             method: 'POST',
             body: formData,
             headers: {
