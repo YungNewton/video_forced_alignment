@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.textContent = 'Processing...';
         submitButton.disabled = true;
 
-        fetch('https://video-processing.crabdance-backend.com//upload', {
+        fetch('https://video-processing.crabdance-backend.com/upload', {
             method: 'POST',
             body: formData,
             headers: {
