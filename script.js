@@ -25,12 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.textContent = 'Processing...';
         submitButton.disabled = true;
 
-        fetch('https://video-processing-backend.onrender.com/upload', {
+        fetch('https://video-processing-backend.crabdance.com/upload', {
             method: 'POST',
             body: formData,
             headers: {
                 'Accept': 'application/json',
-                'Origin': 'https://yungnewton.github.io'
+                'Origin': 'https://video-processing.crabdance.com/'
             }
         })
         .then(response => {
