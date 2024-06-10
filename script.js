@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             body: formData,
             headers: {
                 'Accept': 'application/json',
-                'Origin': 'https://video-processing.crabdance.com/'
+                'Origin': 'https://yungnewton.github.io'
             }
         })
         .then(response => {
