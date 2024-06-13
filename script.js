@@ -7,16 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         var formData = new FormData(form);
 
-        // Validate background music ranges
-        const happyStart = parseInt(document.getElementById('happy_start').value, 10);
-        const happyEnd = parseInt(document.getElementById('happy_end').value, 10);
-        const sadStart = parseInt(document.getElementById('sad_start').value, 10);
-        const sadEnd = parseInt(document.getElementById('sad_end').value, 10);
-
-        if (happyStart >= happyEnd || sadStart >= sadEnd || happyEnd > sadStart) {
-            alert('Invalid background music ranges. Ensure they do not overlap and start times are less than end times.');
-            return;
-        }
+        // Add default values if fields are not filled
+        if (!formData.get('subtitle_width')) formData.set('subtitle_width', 650);
+        if (!formData.get('subtitle_height')) formData.set('subtitle_height', 120);
+        if (!formData.get('font_size')) formData.set('font_size', 35);
+        if (!formData.get('bottom_padding')) formData.set('bottom_padding', 50);
+        if (!formData.get('max_width')) formData.set('max_width', 500);  // New max width default value
 
         // Clear previous messages
         responseDiv.innerHTML = '';
@@ -30,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             body: formData,
             headers: {
                 'Accept': 'application/json',
-                'Origin': 'https://yungnewton.github.io'
+                'Origin': 'https://yungnewton.github.io/video_forced_alignment/'
             }
         })
         .then(response => {
