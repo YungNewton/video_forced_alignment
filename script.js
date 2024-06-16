@@ -7,13 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         var formData = new FormData(form);
 
-        // Add default values if fields are not filled
-        if (!formData.get('subtitle_width')) formData.set('subtitle_width', 650);
-        if (!formData.get('subtitle_height')) formData.set('subtitle_height', 120);
-        if (!formData.get('font_size')) formData.set('font_size', 35);
-        if (!formData.get('bottom_padding')) formData.set('bottom_padding', 50);
-        if (!formData.get('max_width')) formData.set('max_width', 500);  // New max width default value
-
         // Clear previous messages
         responseDiv.innerHTML = '';
 
